@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Forum.bg.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/bootstrap-darkly.css" />
+    <style type="text/css">.text-ligth { }
+
+                           .navbar-toggleable-sm { }
+    </style>
 </head>
 <body>
     <header>
@@ -25,6 +29,8 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-ligth" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li><li class="nav-item">
+                            <a class="nav-link text-ligth" asp-area="" asp-controller="Posts" asp-action="Index">Posts</a>
                         </li>
                     </ul>
                 </div>

@@ -7,18 +7,20 @@ namespace Forum.bg.Data.Models
     [Comment("Published post")]
     public class Post
     {
-        [Key]
         [Comment("Post identifier")]
+        [Key]
         public int Id { get; set; }
 
-        [MinLength(TitleMinLength)]
-        [MaxLength(TitleMaxLength)]
         [Comment("Post title")]
+        [MaxLength(TitleMaxLength)]
         public string Title { get; set; } = null!;
 
-        [MinLength(ContentMinLength)]
-        [MaxLength(ContentMaxLength)]
         [Comment("Content")]
+        [MaxLength(ContentMaxLength)]
         public string Content { get; set; } = null!;
+
+        [Comment("Marks entry to deleted")]
+        [Required]
+        public bool IsDeleted { get; set; } = false;
     }
 }

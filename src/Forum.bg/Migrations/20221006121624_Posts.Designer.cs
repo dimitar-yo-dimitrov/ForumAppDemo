@@ -3,6 +3,7 @@ using Forum.bg.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Forum.bg.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221006121624_Posts")]
+    partial class Posts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,10 +38,6 @@ namespace Forum.bg.Migrations
                         .HasColumnType("nvarchar(1500)")
                         .HasComment("Content");
 
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasComment("Marks entry to deleted");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -57,21 +55,18 @@ namespace Forum.bg.Migrations
                         {
                             Id = 1,
                             Content = "My first post will be about performing CRUD operations in MVC.",
-                            IsDeleted = false,
                             Title = "My first post"
                         },
                         new
                         {
                             Id = 2,
                             Content = "This is my second post.CRUD operation in MVC.",
-                            IsDeleted = false,
                             Title = "My second post"
                         },
                         new
                         {
                             Id = 3,
                             Content = "This is my third post.CRUD operation in MVC.",
-                            IsDeleted = false,
                             Title = "My third post"
                         });
                 });

@@ -18,6 +18,6 @@ namespace Forum.bg.Data
             base.OnModelCreating(builder);
         }
 
-        public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<Post> Posts { get; init; }
     }
 }
