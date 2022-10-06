@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Forum.bg</name>
+    </assembly>
+    <members>
+        <member name="T:Forum.bg.Constants.DataConstants">
+            <summary>
+            Data layer constants
+            </summary>
+        </member>
+        <member name="T:Forum.bg.Constants.DataConstants.Post">
+            <summary>
+            Post constants
+            </summary>
+        </member>
+        <member name="T:Forum.bg.Data.Configure.PostConfiguration">
+            <summary>
+            Seed posts
+            </summary>
+        </member>
+    </members>
+</doc>
