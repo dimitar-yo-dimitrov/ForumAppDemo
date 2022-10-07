@@ -13,7 +13,7 @@ namespace Forum.bg.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration<Post>(new PostConfiguration());
+            builder.ApplyConfiguration(new PostConfiguration());
 
             base.OnModelCreating(builder);
         }

@@ -6,21 +6,32 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Forum.bg.Controllers
 {
+    /// <summary>
+    /// CRUD Operations 
+    /// </summary>
     public class PostsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
+        /// <summary>
+        /// DI constructor
+        /// </summary>
+        /// <param name="context"></param>
         public PostsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
+        /// <summary>
+        /// Return view for all posts in DB
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
             ViewBag.Title = "All posts";
             var posts = await _context.Posts
                 .AsNoTracking()
-                .Where(p => !p.IsDeleted)
+                .Where(p => p.IsDeleted == false)
                 .Select(p => new PostViewModel()
                 {
                     Id = p.Id,
@@ -32,9 +43,18 @@ namespace Forum.bg.Controllers
             return View(posts);
         }
 
+        /// <summary>
+        /// Get view Add
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Add() => View();
 
+        /// <summary>
+        /// Return view model and add post
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Add(PostViewModel model)
         {
@@ -49,21 +69,26 @@ namespace Forum.bg.Controllers
                 Content = model.Content
             };
 
-            await this._context.Posts.AddAsync(post);
-            await this._context.SaveChangesAsync();
+            await _context.Posts.AddAsync(post);
+            await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Get view post from DB for edit
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            Post post = await this._context
+            Post post = await _context
                 .Posts
                 .AsNoTracking()
                 .SingleOrDefaultAsync(p => p.Id == id && !p.IsDeleted) ?? new Post();
 
-            if (post.Title == null)
+            if (post == null)
             {
                 return BadRequest();
             }
@@ -76,6 +101,11 @@ namespace Forum.bg.Controllers
             });
         }
 
+        /// <summary>
+        /// Edit post
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Edit(PostViewModel model)
         {
@@ -84,11 +114,11 @@ namespace Forum.bg.Controllers
                 return View(model);
             }
 
-            Post post = await this._context
+            Post post = await _context
                 .Posts
                 .FirstOrDefaultAsync(p => p.Id == model.Id && !p.IsDeleted) ?? new Post();
 
-            if (post.Title == null)
+            if (post == null)
             {
                 return BadRequest();
             }
@@ -96,14 +126,19 @@ namespace Forum.bg.Controllers
             post.Title = model.Title;
             post.Content = model.Content;
 
-            await this._context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }
 
+        /// <summary>
+        /// Change the flag (IsDeleted) when the post is deleted
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Delete(int id)
         {
-            Post post = (await this._context
+            Post post = (await _context
                 .Posts
                 .FirstOrDefaultAsync(p => p.Id == id))!;
 
@@ -114,7 +149,7 @@ namespace Forum.bg.Controllers
 
             post.IsDeleted = true;
 
-            await this._context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }

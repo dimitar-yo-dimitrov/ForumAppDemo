@@ -14,6 +14,57 @@
             Post constants
             </summary>
         </member>
+        <member name="T:Forum.bg.Controllers.PostsController">
+            <summary>
+            CRUD Operations 
+            </summary>
+        </member>
+        <member name="M:Forum.bg.Controllers.PostsController.#ctor(Forum.bg.Data.ApplicationDbContext)">
+            <summary>
+            DI constructor
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Forum.bg.Controllers.PostsController.Index">
+            <summary>
+            Return view for all posts in DB
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Forum.bg.Controllers.PostsController.Add">
+            <summary>
+            Get view Add
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Forum.bg.Controllers.PostsController.Add(Forum.bg.Models.PostViewModel)">
+            <summary>
+            Return view model and add post
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Forum.bg.Controllers.PostsController.Edit(System.Int32)">
+            <summary>
+            Get view post from DB for edit
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Forum.bg.Controllers.PostsController.Edit(Forum.bg.Models.PostViewModel)">
+            <summary>
+            Edit post
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Forum.bg.Controllers.PostsController.Delete(System.Int32)">
+            <summary>
+            Change the flag (IsDeleted) when the post is deleted
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:Forum.bg.Data.Configure.PostConfiguration">
             <summary>
             Seed posts

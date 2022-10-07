@@ -7,10 +7,14 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Forum.bg.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/bootstrap-darkly.css" />
-    <style type="text/css">.text-ligth { }
+    <link rel="stylesheet" href="~/css/bootstrap-darkly.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/limonte-sweetalert2/sweetalert2.css" asp-append-version="true">
+    <style type="text/css">
+        .text-ligth {
+        }
 
-                           .navbar-toggleable-sm { }
+        .navbar-toggleable-sm {
+        }
     </style>
 </head>
 <body>
@@ -29,7 +33,8 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-ligth" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li><li class="nav-item">
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-ligth" asp-area="" asp-controller="Posts" asp-action="Index">Posts</a>
                         </li>
                     </ul>
@@ -50,6 +55,7 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/limonte-sweetalert2/sweetalert2.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
