@@ -44,7 +44,7 @@ namespace Forum.bg.Controllers
         }
 
         /// <summary>
-        /// Get view Add
+        /// Get view 
         /// </summary>
         /// <returns></returns>
         [HttpGet]
