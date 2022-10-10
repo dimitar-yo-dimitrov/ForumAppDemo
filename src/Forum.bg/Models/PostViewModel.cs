@@ -3,6 +3,9 @@ using static Forum.bg.Constants.DataConstants.Post;
 
 namespace Forum.bg.Models;
 
+/// <summary>
+/// Post DTO
+/// </summary>
 public class PostViewModel
 {
     public int Id { get; set; }

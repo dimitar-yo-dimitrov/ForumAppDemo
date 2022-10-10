@@ -70,5 +70,10 @@
             Seed posts
             </summary>
         </member>
+        <member name="T:Forum.bg.Models.PostViewModel">
+            <summary>
+            Post DTO
+            </summary>
+        </member>
     </members>
 </doc>
